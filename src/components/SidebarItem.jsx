@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const SideList = ({
+const SidebarItem = ({
   text = "Ini Link",
   path = "/",
   imgPath = "/",
@@ -20,4 +20,4 @@ const SideList = ({
   );
 };
 
-export default SideList;
+export default SidebarItem;

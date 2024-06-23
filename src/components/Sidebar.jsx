@@ -1,5 +1,8 @@
 import React from "react";
-import SideList from "./SideList";
+import SidebarItem from "./SidebarItem";
+import homeIcon from "../assets/home.svg";
+import kpIcon from "../assets/post.svg";
+import taIcon from "../assets/post2.svg";
 
 const Sidebar = ({ isChecked, handleCheckboxChange }) => {
   return (
@@ -32,22 +35,22 @@ const Sidebar = ({ isChecked, handleCheckboxChange }) => {
           </h3>
         </header>
         <ul className="flex flex-col justify-center">
-          <SideList
-            path="/"
+          <SidebarItem
+            path="/beranda"
             text="Beranda"
-            imgPath="./home.svg"
+            imgPath={homeIcon}
             imgAlt="beranda"
           />
-          <SideList
+          <SidebarItem
             path="/input-nilai-kp"
             text="Kerja Praktek"
-            imgPath="./post.svg"
+            imgPath={kpIcon}
             imgAlt="input-nilai-kp"
           />
-          <SideList
+          <SidebarItem
             path="/input-nilai-ta"
             text="Tugas Akhir"
-            imgPath="./post2.svg"
+            imgPath={taIcon}
             imgAlt="input-nilai-ta"
           />
         </ul>

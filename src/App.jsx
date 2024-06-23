@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
 import Beranda from "./pages/Beranda";
 import InputNilaiKP from "./pages/InputNilaiKP";
 import InputNilaiTA from "./pages/InputNilaiTA";
 import Header from "./components/Header";
+import DetailInputNilaiKP from "./pages/DetailInputNilaiKP";
+import DetailInputNilaiTA from "./pages/DetailInputNilaiTA";
 
 const App = () => {
   const Layout = () => {
@@ -33,11 +40,19 @@ const App = () => {
 
   const router = createBrowserRouter([
     {
+      path: "/login",
+      element: <Login />,
+    },
+    {
       path: "/",
       element: <Layout />,
       children: [
         {
           path: "/",
+          element: <Navigate to="/login" replace />, // Redirect root to login
+        },
+        {
+          path: "/beranda",
           element: <Beranda />,
         },
         {
@@ -48,11 +63,19 @@ const App = () => {
           path: "/input-nilai-ta",
           element: <InputNilaiTA />,
         },
+        {
+          path: "/detail-kp/:nim",
+          element: <DetailInputNilaiKP />,
+        },
+        {
+          path: "/detail-ta/:nim",
+          element: <DetailInputNilaiTA />,
+        },
       ],
     },
     {
-      path: "/login",
-      element: <Login />,
+      path: "*",
+      element: <Navigate to="/login" replace />, // Catch-all route to redirect to login
     },
   ]);
 

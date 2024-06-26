@@ -30,7 +30,9 @@ const App = () => {
           handleCheckboxChange={handleCheckboxChange}
         />
         <div
-          className={` ${isChecked ? "ml-60" : ""} transition-all duration-700`}
+          className={` ${
+            isChecked ? "sm:ml-0 lg:ml-60" : ""
+          } transition-all duration-700`}
         >
           <Outlet />
         </div>

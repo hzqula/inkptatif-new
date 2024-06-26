@@ -16,7 +16,7 @@
 }
 
 .sidebar {
-  @apply fixed -left-60 w-1/5 lg:w-60 h-full bg-primary transition-all duration-700 z-50;
+  @apply fixed -left-60 w-2/5 md:w-1/5 lg:w-60 h-full bg-primary transition-all duration-700 z-50;
 }
 
 .show-sidebar {

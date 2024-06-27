@@ -73,10 +73,7 @@ const AreaChartNilai = ({ userInfo, data }) => {
         >
           <p className="font-extrabold text-primary">
             Kriteria:
-            <span className="font-medium text-secondary">
-              {" "}
-              {truncateText(data.kriteria, 2)}
-            </span>
+            <span className="font-medium text-secondary"> {data.kriteria}</span>
           </p>
           <p className="font-extrabold text-primary">
             Nilai:

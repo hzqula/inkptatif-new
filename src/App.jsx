@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -8,15 +8,21 @@ import {
 import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
 import Beranda from "./pages/Beranda";
-import InputNilaiKP from "./pages/KP";
-import InputNilaiTA from "./pages/TA";
-import Header from "./components/Header";
 import DetailInputNilaiKP from "./pages/DetailInputNilaiKP";
 import DetailInputNilaiTA from "./pages/DetailInputNilaiTA";
 import KP from "./pages/KP";
 import TA from "./pages/TA";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const Layout = () => {
     const [isChecked, setIsChecked] = useState(false);
 
@@ -42,33 +48,37 @@ const App = () => {
     );
   };
 
+  const ProtectedRoute = ({ element }) => {
+    return isAuthenticated ? element : <Navigate to="/login" />;
+  };
+
   const router = createBrowserRouter([
     {
       path: "/login",
-      element: <Login />,
+      element: <Login setIsAuthenticated={setIsAuthenticated} />,
     },
     {
       path: "/",
-      element: <Layout />,
+      element: <ProtectedRoute element={<Layout />} />,
       children: [
         {
-          path: "/beranda",
+          path: "beranda",
           element: <Beranda />,
         },
         {
-          path: "/kp/",
+          path: "kp",
           element: <KP />,
         },
         {
-          path: "/ta/",
+          path: "ta",
           element: <TA />,
         },
         {
-          path: "/detail-kp/:nim",
+          path: "detail-kp/:nim",
           element: <DetailInputNilaiKP />,
         },
         {
-          path: "/detail-ta/:nim",
+          path: "detail-ta/:nim",
           element: <DetailInputNilaiTA />,
         },
       ],

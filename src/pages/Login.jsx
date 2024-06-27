@@ -48,7 +48,7 @@ const Login = () => {
       <div className="flex items-center bg-white shadow-lg md:h-3/5 lg:h-[70%] w-[85%] justify-between overflow-hidden border-secondary border-2">
         <div className="w-full lg:w-[40%] p-16">
           <h1 className="text-3xl font-bold md:mb-2 lg:mb-4 lg:text-4xl text-primary font-primary">
-            InKPTA<span className="text-secondary">TIF</span>
+            INKPTA<span className="text-secondary">TIF</span>
           </h1>
           <p className="font-medium md:mb-3 lg:mb-6 md:text-sm lg:text-base text-primary font-primary">
             Aplikasi penginputan nilai untuk dosen pembimbing dan dosen penguji,

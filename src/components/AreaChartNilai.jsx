@@ -94,7 +94,16 @@ const AreaChartNilai = ({ userInfo, data }) => {
                 <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <XAxis dataKey="kriteria" dy={10} />
+            <XAxis
+              dataKey="kriteria"
+              fontSize={12}
+              tick={{ fontSize: 8 }}
+              interval={0}
+              dy={10}
+              tickFormatter={(tick, index) =>
+                window.innerWidth < 430 ? (index % 2 === 0 ? tick : "") : tick
+              }
+            />
             <YAxis />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip

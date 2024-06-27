@@ -136,7 +136,7 @@ const InputNilai = ({ dataSeminar, userInfo, ket, kat }) => {
               <button
                 type="button"
                 onClick={() => handleInputChange(index, nilai[index] - 1)}
-                className="flex items-center justify-between h-8 p-3 font-black bg-gray-100 border text-primary hover:text-customWhite hover:bg-primary border-secondary rounded-s-lg focus:ring-gray-100 focus:ring-2 focus:outline-none active:bg-customRed"
+                className="flex items-center justify-between h-8 p-3 font-black bg-gray-100 border text-primary hover:text-customWhite hover:bg-primary border-secondary focus:ring-gray-100 focus:ring-2 focus:outline-none active:bg-customRed"
               >
                 -
               </button>
@@ -154,7 +154,7 @@ const InputNilai = ({ dataSeminar, userInfo, ket, kat }) => {
               <button
                 type="button"
                 onClick={() => handleInputChange(index, nilai[index] + 1)}
-                className="flex items-center justify-between h-8 p-3 font-black bg-gray-100 border text-primary hover:text-customWhite hover:bg-primary border-secondary rounded-e-lg focus:ring-gray-100 focus:ring-2 focus:outline-none active:bg-customGreen"
+                className="flex items-center justify-between h-8 p-3 font-black bg-gray-100 border text-primary hover:text-customWhite hover:bg-primary border-secondary focus:ring-gray-100 focus:ring-2 focus:outline-none active:bg-customGreen"
               >
                 +
               </button>
@@ -164,7 +164,7 @@ const InputNilai = ({ dataSeminar, userInfo, ket, kat }) => {
         <div className="absolute bottom-0 flex justify-center w-full px-4 py-4 translate-x-1/2 bg-white right-1/2">
           <button
             type="submit"
-            className="w-full inline-block px-[20px] py-2 bg-customGreen text-customWhite text-sm font-bold rounded-lg"
+            className="w-full inline-block px-[20px] py-2 bg-customGreen text-customWhite text-sm font-bold"
           >
             Simpan
           </button>

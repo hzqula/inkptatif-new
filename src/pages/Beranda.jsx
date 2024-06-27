@@ -49,7 +49,7 @@ const Beranda = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 auto-rows-[minmax(180px,_auto)] gap-5">
-          <div className="flex flex-col justify-between col-span-1 row-span-1 p-6 bg-white border rounded-md shadow-md sm:col-span-2 lg:col-span-3 lg:row-span-2 border-gray shadow-black/7">
+          <div className="flex flex-col justify-between col-span-1 row-span-1 p-6 bg-white border shadow-md sm:col-span-2 lg:col-span-3 lg:row-span-2 border-gray shadow-black/7">
             <div className="p-4">
               <div className="mb-4 ml-2">
                 <h1 className="mb-2 text-2xl font-extrabold sm:text-3xl md:text-4xl text-primary">
@@ -69,16 +69,16 @@ const Beranda = () => {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <Link to="/input-nilai-kp/">
-                <div className="relative col-span-1 row-span-1 p-6 overflow-hidden border rounded-md shadow-md group bg-customGreen border-gray shadow-black/7">
+              <Link to="/kp">
+                <div className="relative col-span-1 row-span-1 p-6 overflow-hidden border shadow-md group bg-customGreen border-gray shadow-black/7">
                   <div className="absolute z-0 transition-all duration-700 transform rounded-full w-60 h-60 -bottom-28 -right-24 bg-primary bg-opacity-20 group-hover:w-80 group-hover:h-80 group-hover:-right-16 group-hover:-bottom-44"></div>
                   <h1 className="relative z-10 mb-2 text-lg font-bold text-center text-customWhite">
                     Input Nilai KP
                   </h1>
                 </div>
               </Link>
-              <Link to="/input-nilai-ta/">
-                <div className="relative col-span-1 row-span-1 p-6 overflow-hidden border rounded-md shadow-md group bg-customGreen border-gray shadow-black/7">
+              <Link to="/ta">
+                <div className="relative col-span-1 row-span-1 p-6 overflow-hidden border shadow-md group bg-customGreen border-gray shadow-black/7">
                   <div className="absolute z-0 transition-all duration-700 transform rounded-full w-60 h-60 -bottom-28 -right-24 bg-primary bg-opacity-20 group-hover:w-80 group-hover:h-80 group-hover:-right-16 group-hover:-bottom-44"></div>
                   <h1 className="relative z-10 mb-2 text-lg font-bold text-center text-customWhite">
                     Input Nilai TA
@@ -87,12 +87,12 @@ const Beranda = () => {
               </Link>
             </div>
           </div>
-          <div className="col-span-1 row-span-1 p-6 bg-white border rounded-md shadow-md sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
+          <div className="col-span-1 row-span-1 p-6 bg-white border shadow-md sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
             <h1 className="mb-2 text-lg font-black sm:text-xl text-primary">
               Rincian
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-[minmax(180px,_auto)] gap-4">
-              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border rounded-md shadow-md border-gray shadow-black/7">
+              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
                 <h1 className="mb-2 text-lg font-black sm:text-xl text-primary">
                   Mahasiswa KP
                 </h1>
@@ -108,7 +108,7 @@ const Beranda = () => {
                   Total: 10
                 </h1>
               </div>
-              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border rounded-md shadow-md border-gray shadow-black/7">
+              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
                 <h1 className="mb-2 text-lg font-black sm:text-xl text-primary">
                   Mahasiswa KP
                 </h1>
@@ -124,7 +124,7 @@ const Beranda = () => {
                   Total: 10
                 </h1>
               </div>
-              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border rounded-md shadow-md border-gray shadow-black/7">
+              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
                 <h1 className="mb-2 text-lg font-black sm:text-xl text-primary">
                   Mahasiswa TA
                 </h1>
@@ -140,7 +140,7 @@ const Beranda = () => {
                   Total: 10
                 </h1>
               </div>
-              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border rounded-md shadow-md border-gray shadow-black/7">
+              <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
                 <h1 className="mb-2 text-lg font-black sm:text-xl text-primary">
                   Mahasiswa TA
                 </h1>

@@ -42,16 +42,16 @@ const Sidebar = ({ isChecked, handleCheckboxChange }) => {
             imgAlt="beranda"
           />
           <SidebarItem
-            path="/input-nilai-kp"
+            path="/kp"
             text="Kerja Praktek"
             imgPath={kpIcon}
-            imgAlt="input-nilai-kp"
+            imgAlt="kp"
           />
           <SidebarItem
-            path="/input-nilai-ta"
+            path="/ta"
             text="Tugas Akhir"
             imgPath={taIcon}
-            imgAlt="input-nilai-ta"
+            imgAlt="ta"
           />
         </ul>
       </div>

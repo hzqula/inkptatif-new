@@ -8,11 +8,13 @@ import {
 import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
 import Beranda from "./pages/Beranda";
-import InputNilaiKP from "./pages/InputNilaiKP";
-import InputNilaiTA from "./pages/InputNilaiTA";
+import InputNilaiKP from "./pages/KP";
+import InputNilaiTA from "./pages/TA";
 import Header from "./components/Header";
 import DetailInputNilaiKP from "./pages/DetailInputNilaiKP";
 import DetailInputNilaiTA from "./pages/DetailInputNilaiTA";
+import KP from "./pages/KP";
+import TA from "./pages/TA";
 
 const App = () => {
   const Layout = () => {
@@ -58,12 +60,12 @@ const App = () => {
           element: <Beranda />,
         },
         {
-          path: "/input-nilai-kp",
-          element: <InputNilaiKP />,
+          path: "/kp",
+          element: <KP />,
         },
         {
           path: "/input-nilai-ta",
-          element: <InputNilaiTA />,
+          element: <TA />,
         },
         {
           path: "/detail-kp/:nim",

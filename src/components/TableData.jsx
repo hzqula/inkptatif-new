@@ -36,10 +36,15 @@ const TableData = ({ datas, ket, kat }) => {
               {data.tanggal}
             </span>
           </td>
-          <td className="p-3 pr-0 font-bold text-end text-primary">
+          <td className="pr-0 text-center">
+            <span className="inline-block px-[20px] py-2.5 bg-primary text-customWhite text-sm font-bold">
+              Sudah
+            </span>
+          </td>
+          <td className="p-3 pr-0 font-bold text-primary">
             <button
               onClick={() => handleNavigate(data.nim)}
-              className="btn btn-primary"
+              className="inline-block px-[20px] py-2 border-2 border-primary text-primary text-sm font-bold hover:bg-primary hover:text-customWhite"
             >
               Lihat
             </button>

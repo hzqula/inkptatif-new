@@ -3,7 +3,7 @@ import axios from "axios";
 import Table from "../components/Table";
 import Header from "../components/Header";
 
-const InputNilaiKP = () => {
+const TA = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -18,9 +18,6 @@ const InputNilaiKP = () => {
           }
         );
 
-        console.log(localStorage.getItem("token"));
-        console.log("test");
-        console.log(response.data);
         setUserInfo(response.data);
       } catch (error) {
         console.error("Failed to fetch user info:", error);
@@ -52,9 +49,9 @@ const InputNilaiKP = () => {
           </h2>
         </div>
       </div>
-      <Table userInfo={userInfo} kat="kp" />
+      <Table userInfo={userInfo} kat="ta" />
     </>
   );
 };
 
-export default InputNilaiKP;
+export default TA;

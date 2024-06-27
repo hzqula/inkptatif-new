@@ -3,7 +3,7 @@ import axios from "axios";
 import Table from "../components/Table";
 import Header from "../components/Header";
 
-const InputNilaiTA = () => {
+const KP = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -18,6 +18,9 @@ const InputNilaiTA = () => {
           }
         );
 
+        console.log(localStorage.getItem("token"));
+        console.log("test");
+        console.log(response.data);
         setUserInfo(response.data);
       } catch (error) {
         console.error("Failed to fetch user info:", error);
@@ -35,7 +38,7 @@ const InputNilaiTA = () => {
 
       <div className="p-4">
         <div className="mb-4 ml-2">
-          <h1 className="mb-2 text-3xl font-extrabold text-primary">
+          <h1 className="mb-2 text-2xl font-extrabold sm:text-3xl text-primary">
             Selamat datang di halaman Input Nilai KP,
             <span className="text-secondary">
               {" "}
@@ -49,9 +52,11 @@ const InputNilaiTA = () => {
           </h2>
         </div>
       </div>
-      <Table userInfo={userInfo} kat="ta" />
+      <div className="overflow-x-auto">
+        <Table userInfo={userInfo} kat="kp" />
+      </div>
     </>
   );
 };
 
-export default InputNilaiTA;
+export default KP;

@@ -91,6 +91,7 @@ const TableCard = ({ userInfo, kat }) => {
                       data={data}
                       ket={keterangan}
                       kat={kat}
+                      userInfo={userInfo}
                     />
                   ))}
                 </div>

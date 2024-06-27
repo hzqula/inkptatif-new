@@ -82,10 +82,6 @@ const InputNilai = ({ dataSeminar, userInfo, ket, kat }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // if (!idKategori || !idKeterangan) {
-    //   console.error("Kategori or Keterangan data is missing");
-    //   return;
-    // }
 
     try {
       const method = existingNilai.length > 0 ? "put" : "post";
@@ -98,12 +94,12 @@ const InputNilai = ({ dataSeminar, userInfo, ket, kat }) => {
         method,
         url,
         data: {
-          id_kriteria: kriteria.map((k) => k.id), // Mengirim array ID kriteria
-          nilai: nilai, // Mengirim array nilai
-          nip: userInfo.nip, // Kirim nip dosen
-          nim: dataSeminar.nim, // Kirim nim mahasiswa
-          id_kategori: idKategori, // Sesuaikan dengan jenis_kategori yang diinginkan
-          id_keterangan: idKeterangan, // Sesuaikan dengan jenis_keterangan yang diinginkan
+          id_kriteria: kriteria.map((k) => k.id),
+          nilai: nilai,
+          nip: userInfo.nip,
+          nim: dataSeminar.nim,
+          id_kategori: idKategori,
+          id_keterangan: idKeterangan,
         },
       });
 
@@ -164,7 +160,7 @@ const InputNilai = ({ dataSeminar, userInfo, ket, kat }) => {
         <div className="absolute bottom-0 flex justify-center w-full px-4 py-4 translate-x-1/2 bg-white right-1/2">
           <button
             type="submit"
-            className="w-full inline-block px-[20px] py-2 bg-customGreen text-customWhite text-sm font-bold"
+            className="w-full inline-block px-[20px] py-2 bg-primary text-customWhite text-sm font-bold"
           >
             Simpan
           </button>

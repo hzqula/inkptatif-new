@@ -18,9 +18,8 @@ const LineChartNilai = ({ dataDosen, dataSeminar }) => {
 
         // Pengecekan apakah response.data memiliki data penilaian
         if (response.data && response.data.penilaian) {
-          setChartData(response.data);
+          setChartData(response.data.penilaian);
         } else {
-          // Jika tidak ada data penilaian, atur chartData dengan nilai default
           setChartData({
             penilaian: [
               { kriteria: "Kriteria 1", nilai: 0 },
@@ -32,8 +31,6 @@ const LineChartNilai = ({ dataDosen, dataSeminar }) => {
         }
       } catch (error) {
         console.log("Error fetching data: ", error);
-        // Handle error fetching data
-        // Atur chartData dengan nilai default jika terjadi error
         setChartData({
           penilaian: [
             { kriteria: "Kriteria 1", nilai: 0 },
@@ -47,6 +44,8 @@ const LineChartNilai = ({ dataDosen, dataSeminar }) => {
 
     fetchData();
   }, [dataDosen, dataSeminar]);
+
+  console.log(chartData);
 
   // Komponen kustom untuk Tooltip
   const CustomTooltip = ({ active, payload }) => {
@@ -80,7 +79,7 @@ const LineChartNilai = ({ dataDosen, dataSeminar }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={chartData.penilaian}>
+      <LineChart data={chartData}>
         <Tooltip
           content={<CustomTooltip />}
           labelStyle={{ display: "none" }}

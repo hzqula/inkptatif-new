@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const TableData = ({ datas, ket, kat }) => {
+const TableData = ({ datas, ket, kat, userInfo }) => {
   const navigate = useNavigate();
+  const [nilaiStatus, setNilaiStatus] = useState({});
+
+  useEffect(() => {
+    const fetchAllNilai = async () => {
+      const status = {};
+      for (const data of datas) {
+        try {
+          const response = await axios.get(
+            `https://inkptatif.xyz/penilaian/penilaian.php?nip=${userInfo.nip}&nim=${data.nim}`
+          );
+          const dataNilai = response.data.penilaian;
+          status[data.nim] = dataNilai.length > 0;
+        } catch (error) {
+          console.error("Error fetching nilai for NIM:", data.nim, error);
+        }
+      }
+      setNilaiStatus(status);
+    };
+
+    fetchAllNilai();
+  }, [datas]);
 
   const handleNavigate = (nim) => {
     navigate(`/detail-${kat}/${nim}`, { state: { ket, kat } });
   };
-
-  console.log(kat);
 
   return (
     <>
@@ -37,8 +57,14 @@ const TableData = ({ datas, ket, kat }) => {
             </span>
           </td>
           <td className="pr-0 text-center">
-            <span className="inline-block px-[20px] py-2.5 bg-primary text-customWhite text-sm font-bold">
-              Sudah
+            <span
+              className={`inline-block px-[20px] py-2.5 text-sm font-bold ${
+                nilaiStatus[data.nim]
+                  ? "bg-customGreen text-white"
+                  : "bg-customRed text-white"
+              }`}
+            >
+              {nilaiStatus[data.nim] ? "Sudah" : "Belum"}
             </span>
           </td>
           <td className="p-3 pr-0 font-bold text-primary">

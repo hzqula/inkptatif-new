@@ -3,7 +3,6 @@ import profile from "../assets/noavatar.png";
 import PieChartNilai from "./PieChartNilai";
 
 const CardSeminar = ({ data, userInfo }) => {
-  console.log(data);
   return (
     <div className="flex flex-col w-full h-full bg-white">
       <div>

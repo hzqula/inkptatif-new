@@ -11,7 +11,7 @@ const CardNilai = ({ dataSeminar, userInfo, ket, kat }) => {
       <h1 className="mb-4 text-xl font-black text-center text-primary">
         Penilaian
       </h1>
-      <div className="flex flex-col items-center mb-6 overflow-y-auto h-[20rem]">
+      <div className="flex flex-col items-center mb-6 overflow-y-auto h-[24rem]">
         <InputNilai
           dataSeminar={dataSeminar}
           userInfo={userInfo}

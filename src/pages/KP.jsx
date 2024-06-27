@@ -18,9 +18,6 @@ const KP = () => {
           }
         );
 
-        console.log(localStorage.getItem("token"));
-        console.log("test");
-        console.log(response.data);
         setUserInfo(response.data);
       } catch (error) {
         console.error("Failed to fetch user info:", error);
@@ -28,7 +25,6 @@ const KP = () => {
       }
     };
 
-    console.log(userInfo);
     fetchUserInfo();
   }, []);
 

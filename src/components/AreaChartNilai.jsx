@@ -46,6 +46,16 @@ const AreaChartNilai = ({ userInfo, data }) => {
     fetchData();
   }, [userInfo, data]);
 
+  console.log(chartData);
+
+  const truncateText = (text, maxWords) => {
+    const words = text.split(" ");
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(" ") + "...";
+    }
+    return text;
+  };
+
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
@@ -63,7 +73,10 @@ const AreaChartNilai = ({ userInfo, data }) => {
         >
           <p className="font-extrabold text-primary">
             Kriteria:
-            <span className="font-medium text-secondary"> {data.kriteria}</span>
+            <span className="font-medium text-secondary">
+              {" "}
+              {truncateText(data.kriteria, 2)}
+            </span>
           </p>
           <p className="font-extrabold text-primary">
             Nilai:
@@ -82,7 +95,7 @@ const AreaChartNilai = ({ userInfo, data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={chartData}
-            margin={{ top: 10, right: 30, left: 0, bottom: 20 }}
+            margin={{ top: 35, right: 30, left: 0, bottom: 70 }} // Menambahkan margin bawah
           >
             <defs>
               <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -97,12 +110,13 @@ const AreaChartNilai = ({ userInfo, data }) => {
             <XAxis
               dataKey="kriteria"
               fontSize={12}
-              tick={{ fontSize: 8 }}
+              tick={{ fontSize: 10 }}
               interval={0}
               dy={10}
-              tickFormatter={(tick, index) =>
-                window.innerWidth < 430 ? (index % 2 === 0 ? tick : "") : tick
-              }
+              dx={-10} // Menambahkan penyesuaian horizontal
+              tickFormatter={(tick) => truncateText(tick, 2)}
+              angle={-45} // Menambahkan rotasi pada label XAxis
+              textAnchor="end"
             />
             <YAxis />
             <CartesianGrid strokeDasharray="3 3" />

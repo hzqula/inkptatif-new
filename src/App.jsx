@@ -52,19 +52,15 @@ const App = () => {
       element: <Layout />,
       children: [
         {
-          path: "/",
-          element: <Navigate to="/login" replace />, // Redirect root to login
-        },
-        {
           path: "/beranda",
           element: <Beranda />,
         },
         {
-          path: "/kp",
+          path: "/kp/",
           element: <KP />,
         },
         {
-          path: "/ta",
+          path: "/ta/",
           element: <TA />,
         },
         {
@@ -76,10 +72,6 @@ const App = () => {
           element: <DetailInputNilaiTA />,
         },
       ],
-    },
-    {
-      path: "*",
-      element: <Navigate to="/login" replace />, // Catch-all route to redirect to login
     },
   ]);
 

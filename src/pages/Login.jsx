@@ -32,7 +32,6 @@ const Login = () => {
       if (token) {
         localStorage.setItem("token", token);
         setUser(user);
-        console.log("Token: " + token);
         navigate("/beranda/");
       } else {
         setError("Login gagal: NIP dan Password yang Anda masukkan salah");
@@ -41,9 +40,6 @@ const Login = () => {
       setError(error.response?.data?.message || "Login failed");
     }
   };
-
-  console.log(nip);
-  console.log(password);
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-primary">

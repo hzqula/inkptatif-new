@@ -22,8 +22,6 @@ const Beranda = () => {
           }
         );
 
-        console.log(localStorage.getItem("token"));
-        console.log(response.data);
         setUserInfo(response.data);
 
         if (response.data && response.data.nip) {
@@ -39,7 +37,6 @@ const Beranda = () => {
         const response = await axios.get(
           `https://inkptatif.xyz/dosen/dosen.php?nip=${nip}`
         );
-        console.log(response.data);
 
         if (response.data.length > 0) {
           const dosenData = response.data[0];

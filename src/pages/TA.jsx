@@ -25,7 +25,6 @@ const TA = () => {
       }
     };
 
-    console.log(userInfo);
     fetchUserInfo();
   }, []);
 

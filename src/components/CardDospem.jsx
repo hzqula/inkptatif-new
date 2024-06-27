@@ -1,9 +1,28 @@
-import React from "react";
-import Button from "./Button";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import LineChartNilai from "./LineChartNilai";
 import profile from "../assets/noavatar.png";
 
 const CardDospem = ({ dataDosen, dataSeminar, ket }) => {
+  const [isNilaiFilled, setIsNilaiFilled] = useState(false);
+
+  useEffect(() => {
+    const fetchExistingNilai = async () => {
+      try {
+        const response = await axios.get(
+          `https://inkptatif.xyz/penilaian/penilaian.php?nip=${dataDosen.nip}&nim=${dataSeminar.nim}`
+        );
+        const data = response.data.penilaian;
+
+        setIsNilaiFilled(data.length > 0);
+      } catch (error) {
+        console.error("Error fetching existing nilai:", error);
+      }
+    };
+
+    fetchExistingNilai();
+  }, [dataDosen.nip, dataSeminar.nim]);
+
   if (!dataDosen && !dataSeminar) {
     return null;
   }
@@ -28,7 +47,15 @@ const CardDospem = ({ dataDosen, dataSeminar, ket }) => {
       </div>
       <div className="flex items-center justify-between gap-2 mb-4">
         <div className="w-2/5">
-          <Button teks="Sudah" />
+          <span
+            className={`inline-block px-[20px] py-2.5 text-sm font-bold ${
+              isNilaiFilled
+                ? "bg-customGreen text-white"
+                : "bg-customRed text-white"
+            }`}
+          >
+            {isNilaiFilled ? "Sudah" : "Belum"}
+          </span>
         </div>
         <div className="w-2/5 h-16">
           <LineChartNilai

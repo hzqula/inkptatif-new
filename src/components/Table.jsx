@@ -106,6 +106,7 @@ const Table = ({ userInfo, kat }) => {
                         data={data}
                         ket={keterangan}
                         kat={kat}
+                        userInfo={userInfo}
                       />
                     ))}
                   </div>
@@ -134,7 +135,12 @@ const Table = ({ userInfo, kat }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      <TableData datas={datas} ket={keterangan} kat={kat} />
+                      <TableData
+                        datas={datas}
+                        ket={keterangan}
+                        kat={kat}
+                        userInfo={userInfo}
+                      />
                     </tbody>
                   </table>
                 )}

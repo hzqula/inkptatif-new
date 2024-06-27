@@ -66,23 +66,43 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Beranda />,
+        element: (
+          <ProtectedRoute>
+            <Beranda />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/kp/",
-        element: <KP />,
+        element: (
+          <ProtectedRoute>
+            <KP />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/ta/",
-        element: <TA />,
+        element: (
+          <ProtectedRoute>
+            <TA />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/detail-kp/:nim",
-        element: <DetailInputNilaiKP />,
+        element: (
+          <ProtectedRoute>
+            <DetailInputNilaiKP />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/detail-ta/:nim",
-        element: <DetailInputNilaiTA />,
+        element: (
+          <ProtectedRoute>
+            <DetailInputNilaiTA />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

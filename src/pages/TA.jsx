@@ -36,7 +36,7 @@ const TA = () => {
       <div className="p-4">
         <div className="mb-4 ml-2">
           <h1 className="mb-2 text-3xl font-extrabold text-primary">
-            Selamat datang di halaman Input Nilai KP,
+            Selamat datang di halaman Input Nilai TA,
             <span className="text-secondary">
               {" "}
               {userInfo ? userInfo.nama : "Loading..."}

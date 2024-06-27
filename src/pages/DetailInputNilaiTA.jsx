@@ -62,8 +62,36 @@ const DetailInputNilaiTA = () => {
     return null;
   }
 
-  console.log(seminarData.pembimbing);
-  console.log(seminarData.penguji);
+  const pembimbing = seminarData.pembimbing.map((dospem, index) => (
+    <div
+      key={index}
+      className="order-2 col-span-1 p-6 bg-white border shadow-md lg:order-none lg:row-span-1 border-gray shadow-black/7"
+    >
+      <CardDospem
+        dataDosen={dospem}
+        ket="Pembimbing"
+        dataSeminar={seminarData}
+      />
+    </div>
+  ));
+
+  if (pembimbing.length === 1) {
+    pembimbing.push(
+      <div
+        key="empty"
+        className="order-2 col-span-1 p-6 bg-white border shadow-md lg:order-none lg:row-span-1 border-gray shadow-black/7"
+      >
+        <div>
+          <h1 className="mb-2 text-xl font-black text-primary">Pembimbing</h1>
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <div>
+              <h2 className="text-base font-bold text-primary">Tidak ada</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -83,22 +111,9 @@ const DetailInputNilaiTA = () => {
             <CardSeminar data={seminarData} userInfo={userInfo} />
           </div>
 
-          {seminarData &&
-            seminarData.pembimbing &&
-            seminarData.pembimbing.map((dospem, index) => (
-              <div
-                key={index}
-                className="order-2 col-span-1 p-6 bg-white border shadow-md lg:order-none lg:row-span-1 border-gray shadow-black/7"
-              >
-                <CardDospem
-                  dataDosen={dospem}
-                  ket="Pembimbing"
-                  dataSeminar={seminarData}
-                />
-              </div>
-            ))}
+          {pembimbing}
 
-          <div className="relative order-4 col-span-1 p-6 bg-white border shadow-md sm:col-span-2 lg:row-span-2 border-gray shadow-black/7 lg:order-none lg:col-span-1">
+          <div className="relative order-4 col-span-1 p-6 bg-white border-2 shadow-md sm:col-span-2 lg:row-span-2 border-primary shadow-black/7 lg:order-none lg:col-span-1">
             <CardNilai
               dataSeminar={seminarData}
               userInfo={userInfo}
@@ -107,25 +122,23 @@ const DetailInputNilaiTA = () => {
             />
           </div>
 
-          {seminarData &&
-            seminarData.penguji &&
-            seminarData.penguji.map((dosuji, index) => (
-              <div
-                key={index}
-                className="order-3 col-span-1 p-6 bg-white border shadow-md lg:row-span-1 border-gray shadow-black/7 lg:order-none"
-              >
-                <CardDosuji
-                  dataDosen={dosuji}
-                  ket="Penguji"
-                  dataSeminar={seminarData}
-                />
-              </div>
-            ))}
+          {seminarData.penguji.map((dosuji, index) => (
+            <div
+              key={index}
+              className="order-3 col-span-1 p-6 bg-white border shadow-md lg:row-span-1 border-gray shadow-black/7 lg:order-none"
+            >
+              <CardDosuji
+                dataDosen={dosuji}
+                ket="Penguji"
+                dataSeminar={seminarData}
+              />
+            </div>
+          ))}
 
-          <div className="order-5 col-span-1 row-span-2 p-6 bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
+          <div className="flex flex-col order-5 col-span-1 row-span-2 p-6 overflow-y-auto bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
             <AreaChartNilai userInfo={userInfo} data={seminarData} />
           </div>
-          <div className="order-last col-span-1 row-span-2 bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
+          <div className="flex flex-col max-h-[380px] order-last col-span-1 row-span-2 p-6 overflow-y-auto bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
             <TableCard userInfo={userInfo} kat="ta" />
           </div>
         </div>

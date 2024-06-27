@@ -9,6 +9,7 @@ const Login = () => {
   const [nip, setNip] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState(""); // State untuk pesan error
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -16,7 +17,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://inkptatif.xyz/login.php?app=dosen&action=login", // Use the /api prefix
+        "https://inkptatif.xyz/login.php?app=dosen&action=login",
         { nip, password },
         {
           headers: {
@@ -26,22 +27,18 @@ const Login = () => {
         }
       );
 
-      const { token, user } = response.data; // Assume response.data contains user
+      const { token, user } = response.data;
 
       if (token) {
-        // Save token in localStorage or another secure place
         localStorage.setItem("token", token);
-
-        // Save user data in context
         setUser(user);
         console.log("Token: " + token);
-        // Navigate to another page after successful login
         navigate("/beranda/");
       } else {
-        console.error("Login failed: No token received");
+        setError("Login gagal: NIP dan Password yang Anda masukkan salah");
       }
     } catch (error) {
-      console.error("Login failed:", error.response?.data?.message);
+      setError(error.response?.data?.message || "Login failed");
     }
   };
 
@@ -50,7 +47,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-primary">
-      <div className="flex items-center bg-white shadow-l md:h-3/5 lg:h-[70%] w-[85%] justify-between overflow-hidden border-secondary border-2">
+      <div className="flex items-center bg-white shadow-lg md:h-3/5 lg:h-[70%] w-[85%] justify-between overflow-hidden border-secondary border-2">
         <div className="w-full lg:w-[40%] p-16">
           <h1 className="text-3xl font-bold md:mb-2 lg:mb-4 lg:text-4xl text-primary font-primary">
             InKPTA<span className="text-secondary">TIF</span>
@@ -59,6 +56,11 @@ const Login = () => {
             Aplikasi penginputan nilai untuk dosen pembimbing dan dosen penguji,
             khusus untuk Kerja Praktek dan Tugas Akhir.
           </p>
+          {error && (
+            <div className="p-2 mb-4 text-red-500 bg-red-100 border border-red-400 rounded">
+              {error}
+            </div>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label

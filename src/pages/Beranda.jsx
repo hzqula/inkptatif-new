@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 
 const Beranda = () => {
   const [userInfo, setUserInfo] = useState(null);
+  const [kpDibimbing, setKpDibimbing] = useState(0);
+  const [kpDiuji, setKpDiuji] = useState(0);
+  const [taDibimbing, setTaDibimbing] = useState(0);
+  const [taDiuji, setTaDiuji] = useState(0);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -19,16 +23,52 @@ const Beranda = () => {
         );
 
         console.log(localStorage.getItem("token"));
-        console.log("test");
         console.log(response.data);
         setUserInfo(response.data);
+
+        if (response.data && response.data.nip) {
+          fetchData(response.data.nip);
+        }
       } catch (error) {
         console.error("Failed to fetch user info:", error);
-        // Lakukan penanganan error lain di sini
       }
     };
 
-    console.log(userInfo);
+    const fetchData = async (nip) => {
+      try {
+        const response = await axios.get(
+          `https://inkptatif.xyz/dosen/dosen.php?nip=${nip}`
+        );
+        console.log(response.data);
+
+        if (response.data.length > 0) {
+          const dosenData = response.data[0];
+          const dibimbing = dosenData.dibimbing;
+          const diuji = dosenData.diuji;
+
+          const hitungKPDibimbing = dibimbing.filter(
+            (mhs) => mhs.kategori.toLowerCase() === "kp"
+          ).length;
+          const hitungTADibimbing = dibimbing.filter(
+            (mhs) => mhs.kategori.toLowerCase() === "ta"
+          ).length;
+          const hitungKPDiuji = diuji.filter(
+            (mhs) => mhs.kategori.toLowerCase() === "kp"
+          ).length;
+          const hitungTADiuji = diuji.filter(
+            (mhs) => mhs.kategori.toLowerCase() === "ta"
+          ).length;
+
+          setKpDibimbing(hitungKPDibimbing);
+          setTaDibimbing(hitungTADibimbing);
+          setKpDiuji(hitungKPDiuji);
+          setTaDiuji(hitungTADiuji);
+        }
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    };
+
     fetchUserInfo();
   }, []);
 
@@ -105,7 +145,7 @@ const Beranda = () => {
                 </div>
                 <div className="absolute z-0 transform rounded-full w-60 h-60 -bottom-28 -right-24 bg-primary bg-opacity-20"></div>
                 <h1 className="relative z-10 mb-2 text-lg font-black text-right text-primary">
-                  Total: 10
+                  Total: {kpDibimbing}
                 </h1>
               </div>
               <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
@@ -121,7 +161,7 @@ const Beranda = () => {
                 </div>
                 <div className="absolute z-0 transform rounded-full w-60 h-60 -bottom-28 -right-24 bg-primary bg-opacity-20"></div>
                 <h1 className="relative z-10 mb-2 text-lg font-black text-right text-primary">
-                  Total: 10
+                  Total: {kpDiuji}
                 </h1>
               </div>
               <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
@@ -137,7 +177,7 @@ const Beranda = () => {
                 </div>
                 <div className="absolute z-0 transform rounded-full w-60 h-60 -bottom-28 -right-24 bg-primary bg-opacity-20"></div>
                 <h1 className="relative z-10 mb-2 text-lg font-black text-right text-primary">
-                  Total: 10
+                  Total: {taDibimbing}
                 </h1>
               </div>
               <div className="relative col-span-1 row-span-1 p-6 overflow-hidden bg-white border shadow-md border-gray shadow-black/7">
@@ -153,7 +193,7 @@ const Beranda = () => {
                 </div>
                 <div className="absolute z-0 transform rounded-full w-60 h-60 -bottom-28 -right-24 bg-primary bg-opacity-20"></div>
                 <h1 className="relative z-10 mb-2 text-lg font-black text-right text-primary">
-                  Total: 10
+                  Total: {taDiuji}
                 </h1>
               </div>
             </div>

@@ -32,12 +32,14 @@ const Login = () => {
       if (token) {
         localStorage.setItem("token", token);
         setUser(user);
-        navigate("/beranda/");
+        navigate("/");
       } else {
         setError("Login gagal: NIP dan Password yang Anda masukkan salah");
       }
     } catch (error) {
-      setError(error.response?.data?.message || "Login failed");
+      setError(
+        error.response?.data?.message || "Login gagal: Periksa Koneksi Anda"
+      );
     }
   };
 

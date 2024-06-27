@@ -50,12 +50,12 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-primary">
-      <div className="flex bg-white rounded-lg shadow-lg w-[85%] justify-between overflow-hidden border-secondary border-2">
-        <div className="w-[40%] p-16">
-          <h1 className="mb-4 text-4xl font-bold text-primary font-primary">
+      <div className="flex items-center bg-white shadow-l md:h-3/5 lg:h-[70%] w-[85%] justify-between overflow-hidden border-secondary border-2">
+        <div className="w-full lg:w-[40%] p-16">
+          <h1 className="text-3xl font-bold md:mb-2 lg:mb-4 lg:text-4xl text-primary font-primary">
             InKPTA<span className="text-secondary">TIF</span>
           </h1>
-          <p className="mb-6 text-base font-medium text-primary font-primary">
+          <p className="font-medium md:mb-3 lg:mb-6 md:text-sm lg:text-base text-primary font-primary">
             Aplikasi penginputan nilai untuk dosen pembimbing dan dosen penguji,
             khusus untuk Kerja Praktek dan Tugas Akhir.
           </p>
@@ -63,7 +63,7 @@ const Login = () => {
             <div className="mb-4">
               <label
                 htmlFor="nip"
-                className="block mb-2 font-bold text-primary font-primary"
+                className="block mb-2 font-bold text-primary font-primary md:text-sm"
               >
                 NIP
               </label>
@@ -72,14 +72,14 @@ const Login = () => {
                 id="nip"
                 value={nip}
                 onChange={(e) => setNip(e.target.value)}
-                className="w-full px-3 py-2 font-bold border rounded-md border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
+                className="w-full px-3 font-bold border lg:py-2 md:py-1 border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
                 placeholder="12345678910111213"
               />
             </div>
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block mb-2 font-bold text-primary font-primary"
+                className="block mb-2 font-bold md:text-sm text-primary font-primary"
               >
                 Password
               </label>
@@ -88,7 +88,7 @@ const Login = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 font-bold border rounded-md border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
+                className="w-full px-3 font-bold border lg:py-2 md:py-1 border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
                 placeholder="••••••••"
               />
             </div>
@@ -103,25 +103,28 @@ const Login = () => {
                 />
                 <label
                   htmlFor="rememberMe"
-                  className="block ml-2 text-secondary"
+                  className="block ml-2 text-secondary md:text-[10px]"
                 >
                   Remember me
                 </label>
               </div>
-              <a href="#" className="text-secondary hover:text-blue-800">
+              <a
+                href="#"
+                className="text-secondary hover:text-blue-800 md:text-[10px]"
+              >
                 Forgot password?
               </a>
             </div>
 
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white transition-colors duration-300 rounded-md bg-primary bg-navy-900 hover:bg-navy-700"
+              className="w-full px-4 py-2 text-white transition-colors duration-300 bg-primary bg-navy-900 hover:bg-navy-700"
             >
               Login
             </button>
           </form>
         </div>
-        <div className="w-[60%] flex items-center">
+        <div className="lg:w-[60%] h-full lg:flex items-center hidden">
           <img
             src={heroImg}
             alt="Ilustrasi"

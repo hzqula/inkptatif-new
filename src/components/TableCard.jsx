@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TableData from "./TableData";
 import CardMahasiswa from "./CardMahasiswa";
 
-const Table = ({ userInfo, kat }) => {
+const TableCard = ({ userInfo, kat }) => {
   const [datas, setDatas] = useState([]);
   const [keterangan, setKeterangan] = useState("dibimbing");
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const handleDibimbing = () => {
     setKeterangan("dibimbing");
@@ -53,18 +51,6 @@ const Table = ({ userInfo, kat }) => {
     }
   }, [userInfo, keterangan, kat]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 830);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <div className="flex flex-wrap mb-5">
       <div className="w-full max-w-full mx-auto mb-6">
@@ -98,46 +84,16 @@ const Table = ({ userInfo, kat }) => {
                     Diuji
                   </button>
                 </div>
-                {isMobile ? (
-                  <div className="flex flex-col">
-                    {datas.map((data) => (
-                      <CardMahasiswa
-                        key={data.id}
-                        data={data}
-                        ket={keterangan}
-                        kat={kat}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <table className="w-full my-0 align-middle table-fixed border-neutral-200">
-                    <thead className="align-bottom">
-                      <tr className="font-semibold text-[0.95rem] text-secondary">
-                        <th className="pl-3 pb-3 text-start min-w-[120px] sm:min-w-[175px]">
-                          Judul
-                        </th>
-                        <th className="pl-3 pb-3 text-start min-w-[80px] sm:min-w-[100px]">
-                          Mahasiswa
-                        </th>
-                        <th className="pb-3 text-center w-[100px] sm:w-[150px]">
-                          Keterangan
-                        </th>
-                        <th className="pb-3 text-center w-[100px] sm:w-[150px]">
-                          Tanggal
-                        </th>
-                        <th className="pb-3 text-center w-[100px] sm:w-[100px]">
-                          Status
-                        </th>
-                        <th className="pb-3 text-center w-[80px] sm:w-[100px]">
-                          Rincian
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <TableData datas={datas} ket={keterangan} kat={kat} />
-                    </tbody>
-                  </table>
-                )}
+                <div className="flex flex-col">
+                  {datas.map((data) => (
+                    <CardMahasiswa
+                      key={data.id}
+                      data={data}
+                      ket={keterangan}
+                      kat={kat}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -147,4 +103,4 @@ const Table = ({ userInfo, kat }) => {
   );
 };
 
-export default Table;
+export default TableCard;

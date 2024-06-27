@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import CardDospem from "../components/CardDospem";
 import CardDosuji from "../components/CardDosuji";
 import AreaChartNilai from "../components/AreaChartNilai";
+import TableCard from "../components/TableCard";
 
 const DetailInputNilaiTA = () => {
   const { nim } = useParams(); // Ambil nim dari parameter URL
@@ -60,6 +61,9 @@ const DetailInputNilaiTA = () => {
   if (!userInfo || !seminarData) {
     return null;
   }
+
+  console.log(seminarData.pembimbing);
+  console.log(seminarData.penguji);
 
   return (
     <>
@@ -121,8 +125,8 @@ const DetailInputNilaiTA = () => {
           <div className="order-5 col-span-1 row-span-2 p-6 bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
             <AreaChartNilai userInfo={userInfo} data={seminarData} />
           </div>
-          <div className="order-last col-span-1 p-6 bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
-            <AreaChartNilai />
+          <div className="order-last col-span-1 row-span-2 bg-white border shadow-md lg:order-none sm:col-span-2 lg:col-span-2 lg:row-span-2 border-gray shadow-black/7">
+            <TableCard userInfo={userInfo} kat="ta" />
           </div>
         </div>
       </div>

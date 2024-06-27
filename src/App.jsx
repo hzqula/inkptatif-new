@@ -64,7 +64,7 @@ const App = () => {
           element: <KP />,
         },
         {
-          path: "/input-nilai-ta",
+          path: "/ta",
           element: <TA />,
         },
         {

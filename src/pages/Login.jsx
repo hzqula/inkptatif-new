@@ -72,7 +72,7 @@ const Login = () => {
                 id="nip"
                 value={nip}
                 onChange={(e) => setNip(e.target.value)}
-                className="w-full px-3 font-bold border lg:py-2 md:py-1 border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
+                className="w-full px-3 py-2 font-bold border lg:py-2 md:py-1 border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
                 placeholder="12345678910111213"
               />
             </div>
@@ -88,7 +88,7 @@ const Login = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-1 font-bold border lg:py-2 md:py-1 border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
+                className="w-full px-3 py-2 font-bold border lg:py-2 md:py-1 border-secondary focus:outline-none focus:ring-2 focus:ring-blue-500 text-customBlack"
                 placeholder="••••••••"
               />
             </div>

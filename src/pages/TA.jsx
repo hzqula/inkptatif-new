@@ -42,7 +42,7 @@ const TA = () => {
             </span>
           </h1>
           <h2 className="font-semibold text-softPrimary">
-            menginput nilai
+            Silakan menginput nilai
             <span className="font-extrabold"> kerja praktek</span> dari
             mahasiswa yang Anda bimbing atau uji.
           </h2>
